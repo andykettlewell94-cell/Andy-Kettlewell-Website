@@ -33,8 +33,10 @@
         <a href="#gallery">Gallery</a>
         <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
-        <a href="mailto:andy.kettlewell94@gmail.com" class="btn btn-accent btn-sm nav-cta">Email Andy</a>
+        <a href="#contact" class="btn btn-accent btn-sm nav-cta">Book a talk</a>
       </nav>
+
+      <a href="#contact" class="btn btn-accent btn-sm header-cta">Book a talk</a>
 
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
         <span></span><span></span>
@@ -61,7 +63,7 @@
           world and talk about what they teach me.
         </p>
         <div class="hero-actions">
-          <a href="mailto:andy.kettlewell94@gmail.com?subject=Talk%20enquiry" class="btn btn-accent">Book a talk</a>
+          <a href="#contact" class="btn btn-accent">Book a talk</a>
           <a href="#story" class="text-link">Read my story</a>
         </div>
       </div>
@@ -147,7 +149,7 @@
           </li>
         </ul>
 
-        <a href="mailto:andy.kettlewell94@gmail.com?subject=Talk%20enquiry" class="btn btn-accent">Book a talk</a>
+        <a href="#contact" class="btn btn-accent">Book a talk</a>
       </div>
     </section>
 
@@ -185,10 +187,10 @@
       <div class="container">
         <h2 class="minor-heading center">Supported by</h2>
         <ul class="partner-row">
-          <li><a href="https://palmequipmenteurope.com" target="_blank" rel="noopener"><img src="image/logos/palm.png" alt="Palm Equipment"></a></li>
-          <li><a href="https://www.vepaddles.com" target="_blank" rel="noopener"><img src="image/logos/ve.png" alt="VE Paddles"></a></li>
-          <li><a href="https://www.dagger.com" target="_blank" rel="noopener"><img src="image/logos/dagger.png" alt="Dagger Kayaks"></a></li>
-          <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener"><img src="image/logos/pistyll.png" alt="Pistyll Productions"></a></li>
+          <li><img src="image/logos/palm.png" alt="Palm Equipment"></li>
+          <li><img src="image/logos/ve.png" alt="VE Paddles"></li>
+          <li><img src="image/logos/dagger.png" alt="Dagger Kayaks"></li>
+          <li><img src="image/logos/pistyll.png" alt="Pistyll Productions"></li>
         </ul>
       </div>
     </section>
@@ -205,53 +207,70 @@
 
           <dl class="contact-list">
             <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+447733092264">+44 (0) 773 309 2264</a></dd>
+            </div>
+            <div>
               <dt>Email</dt>
               <dd><a href="mailto:andy.kettlewell94@gmail.com">andy.kettlewell94@gmail.com</a></dd>
             </div>
             <div>
               <dt>Based in</dt>
-              <dd>The UK, and happy to travel</dd>
-            </div>
-            <div>
-              <dt>Follow</dt>
-              <dd class="socials">
-                <a href="https://www.instagram.com/akettlewell94/" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener">YouTube</a>
-                <a href="https://www.linkedin.com/in/andy-kettlewell-2539121a6/" target="_blank" rel="noopener">LinkedIn</a>
-              </dd>
+              <dd>Wales, and happy to travel</dd>
             </div>
           </dl>
+
+          <ul class="socials" aria-label="Social media">
+            <li><a href="https://www.instagram.com/akettlewell94/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.facebook.com/AndyKettlewell1" target="_blank" rel="noopener">Facebook <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/in/andy-kettlewell-2539121a6/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+          </ul>
         </div>
 
-        <form class="contact-form" id="contact-form" novalidate>
-          <div class="field-row">
+        <div class="contact-panel">
+          <!-- FORMSPREE: form ID mgakagqe, manage it at formspree.io -->
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/mgakagqe" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New message from andykettlewell.co.uk">
+            <!-- spam trap: real people never see or fill this in -->
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="field-row field-row-names">
+              <label class="field">
+                <span>First name</span>
+                <input type="text" name="first_name" autocomplete="given-name" required>
+              </label>
+              <label class="field">
+                <span>Last name</span>
+                <input type="text" name="last_name" autocomplete="family-name" required>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label class="field">
+                <span>Phone <small>optional</small></span>
+                <input type="tel" name="phone" autocomplete="tel">
+              </label>
+            </div>
             <label class="field">
-              <span>Name</span>
-              <input type="text" name="name" autocomplete="name" required>
+              <span>Company or organisation <small>optional</small></span>
+              <input type="text" name="company" autocomplete="organization">
             </label>
             <label class="field">
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" required>
+              <span>Message</span>
+              <textarea name="message" rows="6" required></textarea>
             </label>
+            <button type="submit" class="btn btn-accent btn-block" id="form-submit">Send message</button>
+            <p class="form-error" id="form-error" role="alert"></p>
+          </form>
+
+          <div class="form-success" id="form-success" tabindex="-1" hidden>
+            <h3>Message sent</h3>
+            <p>Thanks for getting in touch. I'll reply within 48 hours.</p>
           </div>
-          <label class="field">
-            <span>What's it about?</span>
-            <select name="topic">
-              <option>Talk booking</option>
-              <option>Partnership</option>
-              <option>Coaching</option>
-              <option>Something else</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Message</span>
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-          <button type="submit" class="btn btn-accent btn-block">Write the email</button>
-          <p class="form-note" id="form-note" aria-live="polite">
-            This opens your email app with your message filled in. I usually reply within 48 hours.
-          </p>
-        </form>
+        </div>
       </div>
     </section>
 

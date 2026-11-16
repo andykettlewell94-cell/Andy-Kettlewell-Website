@@ -22,14 +22,16 @@ nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () =>
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
 
 /* ---------- Contact form ----------
-   No server yet, so this opens the visitor's email app with the
-   message filled in. Swap for Formspree / Netlify Forms later. */
+   Sends straight to Andy's inbox through Formspree.
+   The form ID lives in the form's action attribute in index.html. */
 const form = document.getElementById("contact-form");
-const note = document.getElementById("form-note");
-const TO = "andy.kettlewell94@gmail.com";
+const errorBox = document.getElementById("form-error");
+const submitBtn = document.getElementById("form-submit");
+const success = document.getElementById("form-success");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   let ok = true;
   form.querySelectorAll("[required]").forEach((input) => {
     const valid = input.value.trim() !== "" && input.checkValidity();
@@ -37,15 +39,35 @@ form.addEventListener("submit", (e) => {
     if (!valid) ok = false;
   });
   if (!ok) {
-    note.textContent = "Add your name, a valid email address and a message, then try again.";
+    errorBox.textContent = "Add your first name, last name, a valid email address and a message.";
     return;
   }
 
-  const data = new FormData(form);
-  const subject = `${data.get("topic")} enquiry from ${data.get("name")}`;
-  const body = `${data.get("message")}\n\n${data.get("name")}\n${data.get("email")}`;
-  window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  note.textContent = "Your email app should now be open with the message ready. Press send there to finish.";
+  if (form.action.includes("YOUR_FORM_ID")) {
+    errorBox.textContent = "The contact form isn't connected yet. Email andy.kettlewell94@gmail.com instead.";
+    return;
+  }
+
+  errorBox.textContent = "";
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending message…";
+
+  try {
+    const res = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) throw new Error(`Formspree returned ${res.status}`);
+
+    form.hidden = true;
+    success.hidden = false;
+    success.focus();
+  } catch (err) {
+    errorBox.textContent = "Your message wasn't sent. Check your connection and try again, or email andy.kettlewell94@gmail.com.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send message";
+  }
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
