@@ -1,146 +1,296 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The personal portfolio of Andy Kettlewell.">
-  <title>Andy Kettlewell | Personal Portfolio</title>
+  <title>Andy Kettlewell | Whitewater Paddler</title>
+  <meta name="description" content="Andy Kettlewell: whitewater paddler, adventurer and storyteller. Think big. Do more.">
+  <meta name="theme-color" content="#0f1b2d">
+
+  <!-- Social sharing preview -->
+  <meta property="og:title" content="Andy Kettlewell | Think Big. Do More.">
+  <meta property="og:description" content="Whitewater paddler, adventurer and storyteller.">
+  <meta property="og:image" content="https://andykettlewell.co.uk/image/web/hero-waterfall.jpg">
+  <meta property="og:url" content="https://andykettlewell.co.uk">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="scripts.js" defer></script>
 </head>
 <body>
 
-  <header class="navbar">
-    <a href="#home" class="logo">AK<span>.</span></a>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Andy Kettlewell, home">
+        ANDY<span>KETTLEWELL</span>
+      </a>
 
-    <button class="menu-toggle" aria-label="Toggle navigation"
-      aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#story">Story</a>
+        <a href="#talks">Talks</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#partners">Partners</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:andy.kettlewell94@gmail.com" class="btn btn-accent btn-sm nav-cta">Get in touch</a>
+      </nav>
 
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#work">My Work</a>
-      <a href="#contact" class="nav-contact">Let's Talk ↗</a>
-    </nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <main>
-   
-<section class="hero" id="home">
 
-  <div class="hero-content">
-    <p class="eyebrow">PERSONAL BRAND · BUSINESS · OPPORTUNITY</p>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <picture class="hero-media">
+        <source media="(max-width: 700px)" srcset="image/web/hero-waterfall-small.jpg">
+        <img src="image/web/hero-waterfall.jpg" alt="Andy Kettlewell running a huge waterfall in a red kayak" fetchpriority="high">
+      </picture>
 
-    <h1>
-      THINK BIG<span>.</span><br>
-      DO MORE<span>.</span>
-    </h1>
+      <div class="container hero-content">
+        <p class="eyebrow">Whitewater paddler · Adventurer · Storyteller</p>
+        <h1 class="display">
+          Think big<span class="dot">.</span><br>
+          Do more<span class="dot">.</span>
+        </h1>
+        <p class="hero-lead">
+          Chasing rivers, pushing limits and sharing what I learn along the way.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:andy.kettlewell94@gmail.com" class="btn btn-accent">Get in touch</a>
+          <a href="#story" class="link-arrow">Discover the story <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
 
-    <h2>I'm Andy. Welcome to my world.</h2>
-
-    <p class="hero-description">
-      Ideas, experiences and projects that make things happen.
-      Discover what I do, what drives me and how we could work together.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#work" class="button button-dark">
-        Explore my work ↗
+      <a href="#stats" class="scroll-cue" aria-label="Scroll down">
+        <span></span>
       </a>
-
-      <a href="#contact" class="text-link">
-        Let's connect ↓
-      </a>
-    </div>
-  </div>
-
-  <div class="hero-photo">
-    <img
-      src="images/andy-profile.jpg"
-      alt="Andy Kettlewell"
-      class="profile-photo"
-    >
-
-    <div class="photo-caption">
-      <span>ANDY KETTLEWELL</span>
-      <span>ALWAYS MOVING FORWARD ✳</span>
-    </div>
-  </div>
-
-</section>
-
-
-    <section class="intro-strip">
-      <p>CURIOUS MIND. CREATIVE THINKING. BIG AMBITIONS.</p>
     </section>
 
-    <section class="section about" id="about">
-      <p class="eyebrow">01 / A LITTLE ABOUT ME</p>
-      <h2>More than a name.<br><span>A story in progress.</span></h2>
-      <p class="section-copy">
-        I'm Andy Kettlewell. This is where I'll share my journey,
-        experiences, interests and the things that inspire me.
-        There's plenty more to come.
-      </p>
-      <a href="#contact" class="text-link">Get in touch ↗</a>
-    </section>
-
-    <section class="section work" id="work">
-      <p class="eyebrow">02 / WHAT I'M WORKING ON</p>
-      <h2>Ideas into <span>action.</span></h2>
-
-      <div class="project-grid">
-        <article class="project-card project-orange">
-          <span>01 / PROJECT</span>
-          <h3>Your next big idea.</h3>
-          <p>A space to showcase a project or achievement.</p>
-        </article>
-
-        <article class="project-card project-green">
-          <span>02 / EXPERIENCE</span>
-          <h3>My journey so far.</h3>
-          <p>Highlight your experience and milestones.</p>
-        </article>
-
-        <article class="project-card project-dark">
-          <span>03 / FUTURE</span>
-          <h3>What's next?</h3>
-          <p>Share your ambitions and future plans.</p>
-        </article>
+    <!-- ============ STATS ============ -->
+    <section class="stats" id="stats" aria-label="Highlights">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <strong>23</strong>
+          <p>Years kayaking</p>
+        </div>
+        <div class="stat reveal">
+          <strong>28</strong>
+          <p>Countries paddled</p>
+        </div>
+        <div class="stat reveal">
+          <strong>500<span>+</span></strong>
+          <p>Rivers paddled</p>
+        </div>
+        <div class="stat reveal">
+          <strong>4</strong>
+          <p>Brand partners</p>
+        </div>
       </div>
     </section>
 
-   
-<section class="contact" id="contact">
+    <!-- ============ STORY ============ -->
+    <section class="section story" id="story">
+      <div class="container story-grid">
+        <div class="story-media reveal">
+          <img src="image/web/story-portrait.jpg" alt="Andy Kettlewell on the riverbank" loading="lazy">
+          <span class="story-tag">Paddling since 2003</span>
+        </div>
 
-  <p class="eyebrow">03 / LET'S CREATE SOMETHING</p>
+        <div class="story-copy">
+          <p class="eyebrow reveal">01 — The story</p>
+          <h2 class="display-md reveal">From the riverbank<br>to <span class="accent">the big water.</span></h2>
 
-  <h2>
-    Have an idea?<br>
-    Let's make it <span>happen.</span>
-  </h2>
+          <!-- EDIT: tell your story in your own words -->
+          <p class="reveal">
+            I'm Andy Kettlewell. I've spent 23 years chasing whitewater, and every
+            river has taught me something new about planning, commitment and
+            staying calm when it counts.
+          </p>
+          <p class="reveal">
+            This site is where I share the journeys, the lessons and the people
+            who make it all possible.
+          </p>
 
-  <p class="contact-description">
-    Interested in working together, discussing an opportunity
-    or simply connecting? I'd love to hear from you.
-  </p>
+          <blockquote class="pull-quote reveal">
+            “The river doesn't care about your plan. It rewards how you respond.”
+          </blockquote>
 
-  <a
-    href="mailto:andy.kettlewell94@gmail.com?subject=Business%20Enquiry"
-    class="button button-light"
-  >
-    Start a conversation ↗
-  </a>
+          <!-- EDIT: 2003 is real, the 20XX milestones are placeholders -->
+          <ol class="timeline reveal">
+            <li><span>2003</span> First strokes in a kayak, aged 9</li>
+            <li><span>20XX</span> First trip paddling abroad</li>
+            <li><span>20XX</span> Milestone to add</li>
+            <li><span>Now</span> 28 countries and counting</li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <!-- ============ TALKS ============ -->
+    <section class="section services" id="talks">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">02 — Talks</p>
+          <h2 class="display-md reveal">Lessons from the river.<br><span class="accent">Told on stage.</span></h2>
+          <p class="section-lead reveal">
+            Stories from 23 years and 28 countries of whitewater, built for
+            schools, clubs, events and businesses.
+          </p>
+        </div>
+
+        <!-- EDIT: placeholder talk titles and descriptions -->
+        <div class="card-grid">
+          <article class="card reveal">
+            <span class="card-num">01</span>
+            <h3>Reading the River</h3>
+            <p>Making clear decisions under pressure when the stakes are real.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">02</span>
+            <h3>28 Countries Later</h3>
+            <p>What 500+ rivers around the world have taught me about adventure.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">03</span>
+            <h3>The Team in the Eddy</h3>
+            <p>Trust, communication and looking after each other on hard water.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num">04</span>
+            <h3>Think Big. Do More.</h3>
+            <p>Turning big ambitions into first steps, and first steps into habits.</p>
+          </article>
+        </div>
+
+        <div class="section-cta reveal">
+          <a href="mailto:andy.kettlewell94@gmail.com?subject=Talk%20enquiry" class="btn btn-accent">Book a talk</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">03 — From the river</p>
+          <h2 class="display-md reveal">Out there<span class="dot">.</span></h2>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="g-item g-wide reveal">
+            <img src="image/web/gallery-aerial-drop.jpg" alt="Aerial view of Andy dropping a waterfall in a red kayak" loading="lazy">
+          </figure>
+          <figure class="g-item g-tall reveal">
+            <img src="image/web/gallery-paddling.jpg" alt="Andy paddling whitewater below a waterfall" loading="lazy">
+          </figure>
+          <figure class="g-item reveal">
+            <img src="image/web/gallery-gorge-drone.jpg" alt="Kayaker running a narrow rocky gorge" loading="lazy">
+          </figure>
+          <figure class="g-item reveal">
+            <img src="image/web/gallery-celebration.jpg" alt="Andy celebrating in his kayak on a whitewater course" loading="lazy">
+          </figure>
+          <figure class="g-item reveal">
+            <img src="image/web/gallery-mountains.jpg" alt="Kayaker on a river beneath snowy mountains" loading="lazy">
+          </figure>
+          <figure class="g-item g-wide reveal">
+            <img src="image/web/gallery-iceland.jpg" alt="Waterfall in Iceland" loading="lazy">
+            <figcaption>Iceland, 2024</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTNERS ============ -->
+    <section class="partners" id="partners">
+      <div class="container">
+        <p class="eyebrow center reveal">Supported by</p>
+        <ul class="partner-row reveal">
+          <li><a href="https://palmequipmenteurope.com" target="_blank" rel="noopener"><img src="image/logos/palm.png" alt="Palm Equipment"></a></li>
+          <li><a href="https://www.vepaddles.com" target="_blank" rel="noopener"><img src="image/logos/ve.png" alt="VE Paddles"></a></li>
+          <li><a href="https://www.dagger.com" target="_blank" rel="noopener"><img src="image/logos/dagger.png" alt="Dagger Kayaks"></a></li>
+          <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener"><img src="image/logos/pistyll.png" alt="Pistyll Productions"></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-intro">
+          <p class="eyebrow reveal">04 — Get in touch</p>
+          <h2 class="display-lg reveal">Let's<br>connect<span class="dot">.</span></h2>
+          <p class="reveal">
+            Talks, partnerships, coaching or just a good river story.
+            Drop me a message and I'll get back to you.
+          </p>
+
+          <ul class="contact-list reveal">
+            <li>
+              <span>Email</span>
+              <a href="mailto:andy.kettlewell94@gmail.com">andy.kettlewell94@gmail.com</a>
+            </li>
+            <li>
+              <span>Based</span>
+              <p>United Kingdom · Available worldwide</p>
+            </li>
+            <li>
+              <span>Follow</span>
+              <p class="socials">
+                <a href="https://www.instagram.com/akettlewell94/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener">YouTube</a>
+                <a href="https://www.linkedin.com/in/andy-kettlewell-2539121a6/" target="_blank" rel="noopener">LinkedIn</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="field-row">
+            <label class="field">
+              <span>Name *</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span>Email *</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <label class="field">
+            <span>What's it about?</span>
+            <select name="topic">
+              <option>Talk booking</option>
+              <option>Partnership</option>
+              <option>Coaching</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Message *</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-accent btn-block">Send message</button>
+          <p class="form-note" id="form-note" aria-live="polite">I usually reply within 48 hours.</p>
+        </form>
+      </div>
+    </section>
 
   </main>
 
-  <footer>
-    <a href="#home" class="logo">AK<span>.</span></a>
-    <p>© 2026 Andy Kettlewell. All rights reserved.</p>
-    <a href="#home" class="text-link">Back to top ↑</a>
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#home" class="logo">ANDY<span>KETTLEWELL</span></a>
+      <p>© <span id="year">2026</span> Andy Kettlewell</p>
+      <a href="#home" class="link-arrow">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
   </footer>
 
 </body>
