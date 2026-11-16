@@ -1,5 +1,3 @@
-document.documentElement.classList.add("js");
-
 const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.getElementById("nav");
@@ -23,25 +21,6 @@ menuButton.addEventListener("click", () => {
 nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
 
-/* ---------- Reveal sections as they scroll into view ---------- */
-const revealEls = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in");
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-  revealEls.forEach((el, i) => {
-    el.style.transitionDelay = `${(i % 4) * 80}ms`;
-    io.observe(el);
-  });
-} else {
-  revealEls.forEach((el) => el.classList.add("in"));
-}
-
 /* ---------- Contact form ----------
    No server yet, so this opens the visitor's email app with the
    message filled in. Swap for Formspree / Netlify Forms later. */
@@ -58,7 +37,7 @@ form.addEventListener("submit", (e) => {
     if (!valid) ok = false;
   });
   if (!ok) {
-    note.textContent = "Please fill in the highlighted fields.";
+    note.textContent = "Add your name, a valid email address and a message, then try again.";
     return;
   }
 
@@ -66,7 +45,7 @@ form.addEventListener("submit", (e) => {
   const subject = `${data.get("topic")} enquiry from ${data.get("name")}`;
   const body = `${data.get("message")}\n\n${data.get("name")}\n${data.get("email")}`;
   window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  note.textContent = "Thanks! Your email app should open with the message ready to send.";
+  note.textContent = "Your email app should now be open with the message ready. Press send there to finish.";
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
