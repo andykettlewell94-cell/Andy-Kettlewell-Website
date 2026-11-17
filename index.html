@@ -72,10 +72,12 @@
     <!-- ============ HIGHLIGHTS ============ -->
     <section class="highlights" aria-label="Highlights">
       <div class="container">
-        <p class="highlights-line">
-          <strong>23 years</strong> in a kayak. <strong>28 countries.</strong>
-          More than <strong>500 rivers</strong>, and still looking for the next one.
-        </p>
+        <ul class="stats">
+          <li><strong>2003</strong> <span>first time in a kayak, aged 9</span></li>
+          <li><strong>23</strong> <span>years in a kayak</span></li>
+          <li><strong>28</strong> <span>countries paddled</span></li>
+          <li><strong>500+</strong> <span>rivers run</span></li>
+        </ul>
       </div>
     </section>
 
@@ -144,35 +146,6 @@
       </div>
     </section>
 
-    <!-- ============ GALLERY ============ -->
-    <section class="section gallery" id="gallery">
-      <div class="container">
-        <h2 class="display-md gallery-title">Out there</h2>
-
-        <div class="gallery-grid">
-          <figure class="g-item g-wide">
-            <img src="image/web/gallery-aerial-drop.jpg" alt="Aerial view of Andy dropping a waterfall in a red kayak" loading="lazy">
-          </figure>
-          <figure class="g-item g-tall">
-            <img src="image/web/gallery-paddling.jpg" alt="Andy paddling whitewater below a waterfall" loading="lazy">
-          </figure>
-          <figure class="g-item">
-            <img src="image/web/gallery-gorge-drone.jpg" alt="Kayaker running a narrow rocky gorge" loading="lazy">
-          </figure>
-          <figure class="g-item">
-            <img src="image/web/gallery-celebration.jpg" alt="Andy celebrating in his kayak on a whitewater course" loading="lazy">
-          </figure>
-          <figure class="g-item">
-            <img src="image/web/gallery-mountains.jpg" alt="Kayaker on a river beneath snowy mountains" loading="lazy">
-          </figure>
-          <figure class="g-item g-wide">
-            <img src="image/web/gallery-iceland.jpg" alt="Waterfall in Iceland" loading="lazy">
-            <figcaption>Iceland, 2024</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ PARTNERS ============ -->
     <section class="partners" id="partners">
       <div class="container">
@@ -190,9 +163,10 @@
     <section class="section contact" id="contact">
       <div class="container contact-grid">
         <div class="contact-intro">
+          <p class="kicker">Get in contact</p>
           <h2 class="display-lg">Let's talk</h2>
           <p>
-            Talks, partnerships, coaching or just a good river story.
+            Talks, partnerships, coaching or just a good river story.<br>
             Send me a message and I'll get back to you.
           </p>
 
@@ -225,32 +199,36 @@
             <input type="hidden" name="_subject" value="New message from andykettlewell.co.uk">
             <!-- spam trap: real people never see or fill this in -->
             <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-head">
+              <p class="kicker">Send a message</p>
+              <h3>I'll get back to you</h3>
+            </div>
             <div class="field-row field-row-names">
               <label class="field">
-                <span>First name</span>
+                <span>First name <span class="req" aria-hidden="true">*</span></span>
                 <input type="text" name="first_name" autocomplete="given-name" required>
               </label>
               <label class="field">
-                <span>Last name</span>
+                <span>Last name <span class="req" aria-hidden="true">*</span></span>
                 <input type="text" name="last_name" autocomplete="family-name" required>
               </label>
             </div>
             <div class="field-row">
               <label class="field">
-                <span>Email</span>
+                <span>Email <span class="req" aria-hidden="true">*</span></span>
                 <input type="email" name="email" autocomplete="email" required>
               </label>
               <label class="field">
-                <span>Phone <small>optional</small></span>
+                <span>Phone</span>
                 <input type="tel" name="phone" autocomplete="tel">
               </label>
             </div>
             <label class="field">
-              <span>Company or organisation <small>optional</small></span>
+              <span>Company or organisation</span>
               <input type="text" name="company" autocomplete="organization">
             </label>
             <label class="field">
-              <span>Message</span>
+              <span>Message <span class="req" aria-hidden="true">*</span></span>
               <textarea name="message" rows="6" required></textarea>
             </label>
             <button type="submit" class="btn btn-accent btn-block" id="form-submit">Send message</button>
