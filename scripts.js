@@ -3,7 +3,7 @@ const menuButton = document.querySelector(".menu-toggle");
 const nav = document.getElementById("nav");
 
 /* ---------- Header: solid background once you scroll ---------- */
-const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+const onScroll = () => header.classList.toggle("scrolled", header.classList.contains("solid") || window.scrollY > 40);
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -29,7 +29,7 @@ const errorBox = document.getElementById("form-error");
 const submitBtn = document.getElementById("form-submit");
 const success = document.getElementById("form-success");
 
-form.addEventListener("submit", async (e) => {
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   let ok = true;

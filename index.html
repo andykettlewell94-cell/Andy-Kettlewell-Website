@@ -28,15 +28,14 @@
       <a href="#home" class="logo" aria-label="Andy Kettlewell, home">Andy Kettlewell</a>
 
       <nav class="nav" id="nav" aria-label="Main">
-        <a href="#story">Story</a>
-        <a href="#talks">Talks</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#partners">Partners</a>
+        <a href="about.html">About</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="portfolio.html">Portfolio</a>
         <a href="#contact">Contact</a>
-        <a href="#contact" class="btn btn-accent btn-sm nav-cta">Book a talk</a>
+        <a href="#talks" class="btn btn-accent btn-sm nav-cta">Book a talk</a>
       </nav>
 
-      <a href="#contact" class="btn btn-accent btn-sm header-cta">Book a talk</a>
+      <a href="#talks" class="btn btn-accent btn-sm header-cta">Book a talk</a>
 
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
         <span></span><span></span>
@@ -54,6 +53,7 @@
       </picture>
 
       <div class="container hero-content">
+        <p class="kicker">Whitewater kayaker and adventurer</p>
         <h1 class="display">
           Think big<span class="dot">.</span><br>
           Do more<span class="dot">.</span>
@@ -64,7 +64,7 @@
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-accent">Book a talk</a>
-          <a href="#story" class="text-link">Read my story</a>
+          <a href="about.html" class="text-link">Read my story<span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -129,27 +129,18 @@
           </p>
         </div>
 
-        <!-- EDIT: placeholder talk titles and descriptions -->
-        <ul class="talk-list">
-          <li>
-            <h3>Reading the river</h3>
-            <p>Making clear decisions under pressure when the stakes are real.</p>
-          </li>
-          <li>
-            <h3>28 countries later</h3>
-            <p>What more than 500 rivers around the world have taught me about adventure.</p>
-          </li>
-          <li>
-            <h3>The team in the eddy</h3>
-            <p>Trust, communication and looking after each other on hard water.</p>
-          </li>
-          <li>
-            <h3>Think big, do more</h3>
-            <p>Turning big ambitions into first steps, and first steps into habits.</p>
-          </li>
+        <!-- EDIT: placeholder talk titles, keep in step with speaking.html -->
+        <ul class="talk-preview">
+          <li>Reading the river</li>
+          <li>28 countries later</li>
+          <li>The team in the eddy</li>
+          <li>Think big, do more</li>
         </ul>
 
-        <a href="#contact" class="btn btn-accent">Book a talk</a>
+        <div class="talks-actions">
+          <a href="#contact" class="btn btn-accent">Book a talk</a>
+          <a href="speaking.html" class="text-link">More about speaking<span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 
@@ -187,10 +178,10 @@
       <div class="container">
         <h2 class="minor-heading center">Supported by</h2>
         <ul class="partner-row">
-          <li><img src="image/logos/palm.png" alt="Palm Equipment"></li>
-          <li><img src="image/logos/ve.png" alt="VE Paddles"></li>
-          <li><img src="image/logos/dagger.png" alt="Dagger Kayaks"></li>
-          <li><img src="image/logos/pistyll.png" alt="Pistyll Productions"></li>
+          <li><a href="https://palmequipmenteurope.com" target="_blank" rel="noopener"><img src="image/logos/palm.png" alt="Palm Equipment"></a></li>
+          <li><a href="https://www.vepaddles.com" target="_blank" rel="noopener"><img src="image/logos/ve.png" alt="VE Paddles"></a></li>
+          <li><a href="https://www.dagger.com" target="_blank" rel="noopener"><img src="image/logos/dagger.png" alt="Dagger Kayaks"></a></li>
+          <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener"><img src="image/logos/pistyll.png" alt="Pistyll Productions"></a></li>
         </ul>
       </div>
     </section>
@@ -221,10 +212,10 @@
           </dl>
 
           <ul class="socials" aria-label="Social media">
-            <li><a href="https://www.instagram.com/akettlewell94/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></li>
-            <li><a href="https://www.facebook.com/AndyKettlewell1" target="_blank" rel="noopener">Facebook <span aria-hidden="true">↗</span></a></li>
-            <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a></li>
-            <li><a href="https://www.linkedin.com/in/andy-kettlewell-2539121a6/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.instagram.com/akettlewell94/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.25" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.25" fill="currentColor"/></svg></a></li>
+            <li><a href="https://www.facebook.com/AndyKettlewell1" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.95.27-1.6 1.63-1.6h1.72V3.86A23 23 0 0 0 14.35 3.7c-2.5 0-4.2 1.52-4.2 4.32v2.48H7.3v3.3h2.85V22z"/></svg></a></li>
+            <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M6 4.75h12A4.25 4.25 0 0 1 22.25 9v6A4.25 4.25 0 0 1 18 19.25H6A4.25 4.25 0 0 1 1.75 15V9A4.25 4.25 0 0 1 6 4.75zM10 8.6v6.8l5.8-3.4z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/andy-kettlewell-2539121a6/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.2 9h3.6v12H3.2zM5 3a2.1 2.1 0 1 1 0 4.2A2.1 2.1 0 0 1 5 3zM9.2 9h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.3 2.4 4.3 5.5V21h-3.6v-5.9c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1v6H9.2z"/></svg></a></li>
           </ul>
         </div>
 
@@ -279,9 +270,18 @@
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <a href="#home" class="logo">Andy Kettlewell</a>
-      <p>© <span id="year">2026</span> Andy Kettlewell</p>
-      <a href="#home" class="text-link">Back to top</a>
+      <p>© <span id="year">2026</span> Andy Kettlewell. All rights reserved.</p>
+      <div class="footer-end">
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy policy</a></li>
+        </ul>
+        <ul class="socials footer-socials" aria-label="Social media">
+          <li><a href="https://www.instagram.com/akettlewell94/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.25" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.25" fill="currentColor"/></svg></a></li>
+          <li><a href="https://www.facebook.com/AndyKettlewell1" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.95.27-1.6 1.63-1.6h1.72V3.86A23 23 0 0 0 14.35 3.7c-2.5 0-4.2 1.52-4.2 4.32v2.48H7.3v3.3h2.85V22z"/></svg></a></li>
+          <li><a href="https://www.youtube.com/@PistyllProductions" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M6 4.75h12A4.25 4.25 0 0 1 22.25 9v6A4.25 4.25 0 0 1 18 19.25H6A4.25 4.25 0 0 1 1.75 15V9A4.25 4.25 0 0 1 6 4.75zM10 8.6v6.8l5.8-3.4z"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/in/andy-kettlewell-2539121a6/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.2 9h3.6v12H3.2zM5 3a2.1 2.1 0 1 1 0 4.2A2.1 2.1 0 0 1 5 3zM9.2 9h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.3 2.4 4.3 5.5V21h-3.6v-5.9c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1v6H9.2z"/></svg></a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
