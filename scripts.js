@@ -62,6 +62,7 @@ form?.addEventListener("submit", async (e) => {
 
     form.hidden = true;
     success.hidden = false;
+    track("generate_lead", { form: "contact" });
     success.focus();
   } catch (err) {
     errorBox.textContent = "Your message wasn't sent. Check your connection and try again, or email andy.kettlewell94@gmail.com.";
@@ -71,3 +72,89 @@ form?.addEventListener("submit", async (e) => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---------- Google Analytics (through Google Tag Manager), only after the visitor accepts cookies ----------
+   GA_ID can be a Tag Manager container ID (GTM-...) or a Google Analytics
+   Measurement ID (G-...). While it says XXXX, no banner shows and nothing is tracked. */
+const GA_ID = "GTM-M4QTMZQV";
+const CONSENT_KEY = "ak-analytics-consent";
+const usesGTM = GA_ID.startsWith("GTM-");
+
+const readConsent = () => { try { return localStorage.getItem(CONSENT_KEY); } catch { return null; } };
+const saveConsent = (value) => { try { localStorage.setItem(CONSENT_KEY, value); } catch {} };
+
+window.dataLayer = window.dataLayer || [];
+function gtag() { window.dataLayer.push(arguments); }
+
+let gaLoaded = false;
+const loadAnalytics = () => {
+  if (gaLoaded) return;
+  gaLoaded = true;
+  const s = document.createElement("script");
+  s.async = true;
+  if (usesGTM) {
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    s.src = `https://www.googletagmanager.com/gtm.js?id=${GA_ID}`;
+  } else {
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    gtag("js", new Date());
+    gtag("config", GA_ID, { anonymize_ip: true });
+  }
+  document.head.appendChild(s);
+};
+
+// Record an interaction, but only if the visitor has said yes.
+// With Tag Manager these arrive as custom events named below (book_talk_click etc.)
+const track = (name, params = {}) => {
+  if (!gaLoaded) return;
+  if (usesGTM) window.dataLayer.push({ event: name, ...params });
+  else gtag("event", name, params);
+};
+
+const showBanner = () => {
+  if (document.querySelector(".cookie-banner")) return;
+  const banner = document.createElement("div");
+  banner.className = "cookie-banner";
+  banner.setAttribute("role", "dialog");
+  banner.setAttribute("aria-label", "Cookie preferences");
+  banner.innerHTML = `
+    <p>Can I use analytics cookies to see how people use this site? They help me improve it.
+    <a href="privacy.html#cookies">Privacy policy</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-sm cookie-reject">Reject</button>
+      <button type="button" class="btn btn-sm cookie-accept">Accept</button>
+    </div>`;
+  document.body.appendChild(banner);
+  const close = (value) => {
+    saveConsent(value);
+    banner.remove();
+    if (value === "granted") loadAnalytics();
+    else if (gaLoaded) location.reload(); // stop tracking straight away if they change their mind
+  };
+  banner.querySelector(".cookie-accept").addEventListener("click", () => close("granted"));
+  banner.querySelector(".cookie-reject").addEventListener("click", () => close("denied"));
+};
+
+if (!GA_ID.includes("XXXX")) {
+  const consent = readConsent();
+  if (consent === "granted") loadAnalytics();
+  else if (consent === null) showBanner();
+
+  // "Cookie settings" link in the footer reopens the choice
+  document.querySelectorAll(".cookie-settings").forEach((link) => {
+    link.hidden = false;
+    link.addEventListener("click", (e) => { e.preventDefault(); showBanner(); });
+  });
+
+  // Interactions worth knowing about
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    if (link.textContent.trim() === "Book a talk") track("book_talk_click", { location: link.className.includes("header") ? "header" : "page" });
+    else if (href.startsWith("mailto:")) track("email_click");
+    else if (href.startsWith("tel:")) track("phone_click");
+    else if (link.closest(".socials")) track("social_click", { network: link.getAttribute("aria-label") });
+    else if (link.closest(".partner-row")) track("partner_click", { partner: link.querySelector("img")?.alt });
+  });
+}

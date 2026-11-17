@@ -587,6 +587,33 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .footer-socials a { color: var(--white); border-color: var(--rule-light); }
 .footer-socials a:hover { border-color: var(--white); color: var(--orange); }
 
+/* ---------- Cookie banner ---------- */
+.cookie-banner {
+  position: fixed;
+  left: var(--gutter);
+  bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  max-width: 420px;
+  padding: 20px 22px;
+  background: var(--ink);
+  color: var(--white);
+  border: 1px solid var(--rule-light);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(15, 27, 45, 0.35);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.cookie-banner a { text-decoration: underline; text-underline-offset: 3px; color: var(--white); }
+.cookie-actions { display: flex; gap: 10px; margin-top: 16px; }
+.cookie-actions .btn { flex: 1; }
+.cookie-reject { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.4); }
+.cookie-reject:hover { border-color: var(--white); }
+.cookie-accept { background: var(--white); color: var(--ink); }
+.cookie-accept:hover { background: var(--mist); }
+@media (max-width: 520px) {
+  .cookie-banner { right: var(--gutter); max-width: none; }
+}
+
 /* ---------- Privacy policy page ---------- */
 .legal { padding-top: calc(var(--header-h) + clamp(48px, 7vw, 96px)); padding-bottom: var(--section-y); }
 .legal-inner { max-width: 44rem; }
