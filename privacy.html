@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+  <!-- Google Tag Manager, with analytics cookies off until the visitor accepts (Consent Mode) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', wait_for_update: 500
+    });
+    try { if (localStorage.getItem('ak-analytics-consent') === 'granted') gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
+  </script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M4QTMZQV');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy policy | Andy Kettlewell</title>
@@ -14,6 +30,9 @@
   <script src="scripts.js" defer></script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QTMZQV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ============ HEADER ============ -->
   <header class="site-header solid scrolled">
@@ -120,8 +139,10 @@
 
         <h2 id="cookies">Cookies and tracking</h2>
         <p>
-          When you first visit, the site asks whether you're happy for it to use
-          analytics cookies. If you accept, Google Analytics sets cookies (named
+          Google Tag Manager loads on every page, which means your browser
+          connects to Google and Google receives your IP address, but no
+          analytics cookies are set until you agree. When you first visit, the
+          site asks whether you're happy for it to use analytics cookies. If you accept, Google Analytics sets cookies (named
           <code>_ga</code> and <code>_ga_</code> followed by an ID) that last up to
           two years and help count visits and see which pages are popular. If you
           reject, no analytics cookies are set and nothing is tracked.

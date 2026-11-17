@@ -73,42 +73,25 @@ form?.addEventListener("submit", async (e) => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* ---------- Google Analytics (through Google Tag Manager), only after the visitor accepts cookies ----------
-   GA_ID can be a Tag Manager container ID (GTM-...) or a Google Analytics
-   Measurement ID (G-...). While it says XXXX, no banner shows and nothing is tracked. */
-const GA_ID = "GTM-M4QTMZQV";
+/* ---------- Analytics consent ----------
+   Google Tag Manager (GTM-M4QTMZQV) loads from the <head> of every page with
+   analytics cookies switched off (Consent Mode). They only switch on when the
+   visitor clicks Accept, and switch off again if they later click Reject. */
 const CONSENT_KEY = "ak-analytics-consent";
-const usesGTM = GA_ID.startsWith("GTM-");
-
 const readConsent = () => { try { return localStorage.getItem(CONSENT_KEY); } catch { return null; } };
 const saveConsent = (value) => { try { localStorage.setItem(CONSENT_KEY, value); } catch {} };
 
 window.dataLayer = window.dataLayer || [];
 function gtag() { window.dataLayer.push(arguments); }
 
-let gaLoaded = false;
-const loadAnalytics = () => {
-  if (gaLoaded) return;
-  gaLoaded = true;
-  const s = document.createElement("script");
-  s.async = true;
-  if (usesGTM) {
-    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
-    s.src = `https://www.googletagmanager.com/gtm.js?id=${GA_ID}`;
-  } else {
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-    gtag("js", new Date());
-    gtag("config", GA_ID, { anonymize_ip: true });
-  }
-  document.head.appendChild(s);
+const setConsent = (value) => {
+  gtag("consent", "update", { analytics_storage: value });
+  window.dataLayer.push({ event: value === "granted" ? "analytics_consent_granted" : "analytics_consent_denied" });
 };
 
-// Record an interaction, but only if the visitor has said yes.
-// With Tag Manager these arrive as custom events named below (book_talk_click etc.)
+// Record an interaction as a Tag Manager custom event, only once the visitor has said yes
 const track = (name, params = {}) => {
-  if (!gaLoaded) return;
-  if (usesGTM) window.dataLayer.push({ event: name, ...params });
-  else gtag("event", name, params);
+  if (readConsent() === "granted") window.dataLayer.push({ event: name, ...params });
 };
 
 const showBanner = () => {
@@ -128,17 +111,14 @@ const showBanner = () => {
   const close = (value) => {
     saveConsent(value);
     banner.remove();
-    if (value === "granted") loadAnalytics();
-    else if (gaLoaded) location.reload(); // stop tracking straight away if they change their mind
+    setConsent(value);
   };
   banner.querySelector(".cookie-accept").addEventListener("click", () => close("granted"));
   banner.querySelector(".cookie-reject").addEventListener("click", () => close("denied"));
 };
 
-if (!GA_ID.includes("XXXX")) {
-  const consent = readConsent();
-  if (consent === "granted") loadAnalytics();
-  else if (consent === null) showBanner();
+{
+  if (readConsent() === null) showBanner();
 
   // "Cookie settings" link in the footer reopens the choice
   document.querySelectorAll(".cookie-settings").forEach((link) => {
