@@ -101,7 +101,7 @@ const showBanner = () => {
   banner.setAttribute("role", "dialog");
   banner.setAttribute("aria-label", "Cookie preferences");
   banner.innerHTML = `
-    <p>Can I use analytics cookies to see how people use this site? They help me improve it.
+    <p>Can this site use analytics cookies to see how people use it? They help Andy improve it.
     <a href="privacy.html#cookies">Privacy policy</a></p>
     <div class="cookie-actions">
       <button type="button" class="btn btn-sm cookie-reject">Reject</button>
@@ -138,3 +138,46 @@ const showBanner = () => {
     else if (link.closest(".partner-row")) track("partner_click", { partner: link.querySelector("img")?.alt });
   });
 }
+
+/* ---------- About page: the journey ----------
+   As you scroll, the orange river fills and each chapter's dot lights up. */
+const journey = document.querySelector(".journey");
+if (journey) {
+  const chapters = [...journey.querySelectorAll(".chapter")];
+  const river = journey.querySelector(".journey-river");
+  const fill = journey.querySelector(".river-fill");
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const mid = window.innerHeight * 0.55;
+    const r = river.getBoundingClientRect();
+    // fills down to the bottom of the last chapter as you scroll
+    const progress = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+    fill.style.setProperty("--progress", progress.toFixed(4));
+    chapters.forEach((c) => c.classList.toggle("reached", c.getBoundingClientRect().top < mid));
+  };
+  const onScrollJourney = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener("scroll", onScrollJourney, { passive: true });
+  window.addEventListener("resize", onScrollJourney);
+  update();
+}
+
+/* ---------- Talk slider (about page) ---------- */
+document.querySelectorAll(".talk-slider").forEach((slider) => {
+  const track = slider.querySelector(".talk-cards");
+  const [prev, next] = slider.querySelectorAll(".slider-btn");
+  const step = () => {
+    const card = track.querySelector(".talk-card");
+    return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0) : track.clientWidth;
+  };
+  const updateButtons = () => {
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+  };
+  slider.querySelectorAll(".slider-btn").forEach((btn) =>
+    btn.addEventListener("click", () => track.scrollBy({ left: step() * Number(btn.dataset.dir) })));
+  track.addEventListener("scroll", updateButtons, { passive: true });
+  window.addEventListener("resize", updateButtons);
+  updateButtons();
+});
