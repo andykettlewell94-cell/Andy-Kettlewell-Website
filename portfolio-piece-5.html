@@ -63,78 +63,77 @@
   <main class="piece">
     <!-- EDIT: placeholder page, fill in the details of your fifth portfolio piece -->
 
-    <!-- ============ INTRO ============ -->
+    <!-- ============ TITLE AND COVER ============ -->
     <section class="piece-intro">
       <div class="container">
         <a href="portfolio.html" class="text-link back-link"><span aria-hidden="true">←</span>All expeditions and projects</a>
         <p class="kicker">Type, location</p>
         <h1 class="display-lg">Portfolio piece to add</h1>
-        <p class="about-lead">Add a one-line summary of this expedition or project.</p>
       </div>
     </section>
-
-    <!-- ============ COVER PHOTO ============ -->
-    <!-- PHOTO: replace the placeholder with <img src="image/..." alt="..."> -->
     <div class="container">
       <figure class="piece-cover"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
     </div>
 
-    <!-- ============ STORY ============ -->
-    <section class="piece-story">
-      <div class="container piece-grid">
-        <dl class="piece-facts">
-            <div><dt>Where</dt><dd>Add location</dd></div>
-            <div><dt>Duration</dt><dd>Add duration</dd></div>
-            <div><dt>Team</dt><dd>Add team</dd></div>
-        </dl>
-        <article class="about-body">
-          <h2>Section heading</h2>
-          <p>Add the story of this expedition or project.</p>
-        </article>
-      </div>
-    </section>
+    <!-- ============ KEY FACTS ============ -->
+    <div class="container">
+      <dl class="piece-stats">
+          <div><dt>Location</dt><dd>Add location</dd></div>
+          <div><dt>River</dt><dd>Add river</dd></div>
+          <div><dt>Date</dt><dd>Add date</dd></div>
+          <div><dt>Type</dt><dd>Add type</dd></div>
+          <div><dt>Duration</dt><dd>Add duration</dd></div>
+      </dl>
+    </div>
 
-    <!-- ============ GALLERY ============ -->
-    <!-- PHOTOS: replace each placeholder <div class="ph"> with <img src="image/..." alt="..." loading="lazy"> -->
-    <section class="piece-gallery">
-      <div class="container">
-        <h2 class="display-md portfolio-heading">Gallery</h2>
-        <div class="pg-grid">
-          <figure class="pg-item pg-wide"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item pg-tall"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item pg-wide"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
-          <figure class="pg-item"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+    <!-- ============ SUMMARY ============ -->
+    <section class="piece-story">
+      <div class="container piece-summary">
+        <h2 class="display-md">Section heading</h2>
+        <div class="piece-summary-text">
+          <p>Add the story of this expedition or project.</p>
         </div>
       </div>
     </section>
 
-    <!-- ============ NEXT / PREVIOUS ============ -->
+    <!-- ============ PHOTOS ============ -->
+    <!-- Click any photo to view it full screen. Photographer credits are kept in data-photographer. -->
+    <section class="piece-gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 id="gallery-title" class="display-md pg-title">Project photos</h2>
+        <div class="pg-grid">
+          <figure class="pg-item pg-ph"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+          <figure class="pg-item pg-ph"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+          <figure class="pg-item pg-ph"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+          <figure class="pg-item pg-ph"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+          <figure class="pg-item pg-ph"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+          <figure class="pg-item pg-ph"><div class="ph" role="img" aria-label="Photo to come"><span>Photo to add</span></div></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MORE EXPEDITIONS ============ -->
     <nav class="piece-nav" aria-label="More expeditions and projects">
-      <div class="container piece-nav-inner">
-        <a href="portfolio-iceland.html" class="piece-nav-link">
-          <span>Previous</span>
-          <strong>Hunting Icelandic waterfalls</strong>
+      <div class="container">
+        <div class="pnav-grid">
+        <a href="portfolio-iceland.html" class="pnav-card pnav-prev">
+          <span class="pnav-text">
+            <span class="pnav-label">Previous expedition</span>
+            <strong>Hunting waterfalls across Iceland</strong>
+          </span>
+          <span class="pnav-arrow" aria-hidden="true">←</span>
         </a>
-        <a href="portfolio-kyrgyzstan.html" class="piece-nav-link piece-nav-next">
-          <span>Next</span>
-          <strong>Sary-Jaz, Tian Shan</strong>
+        <a href="portfolio.html" class="pnav-card pnav-home pnav-next">
+          <span class="pnav-text">
+            <span class="pnav-label">Portfolio</span>
+            <strong>Back to all expeditions and projects</strong>
+          </span>
+          <span class="pnav-arrow" aria-hidden="true">→</span>
         </a>
+        </div>
       </div>
     </nav>
 
-    <!-- ============ CALL TO ACTION ============ -->
-    <section class="about-cta">
-      <div class="container">
-        <h2 class="display-md">Hear the full story</h2>
-        <p>Book a talk and Andy will bring the photos, the film and the stories behind this trip.</p>
-        <a href="index.html#contact" class="btn btn-accent">Book a talk</a>
-      </div>
-    </section>
 
   </main>
 

@@ -181,3 +181,82 @@ document.querySelectorAll(".talk-slider").forEach((slider) => {
   window.addEventListener("resize", updateButtons);
   updateButtons();
 });
+
+/* ---------- Photo viewer (expedition pages) ----------
+   Click a photo to see it full screen. Arrow keys or buttons move between
+   photos, Escape or the close button returns to the page. */
+const galleryLinks = [...document.querySelectorAll(".pg-open")];
+if (galleryLinks.length) {
+  let index = 0;
+  let lastFocus = null;
+  const box = document.createElement("div");
+  box.className = "lightbox";
+  box.hidden = true;
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.setAttribute("aria-label", "Photo viewer");
+  box.innerHTML = `
+    <img alt="">
+    <button type="button" class="lb-btn lb-close" aria-label="Close photo">✕</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous photo">←</button>
+    <button type="button" class="lb-btn lb-next" aria-label="Next photo">→</button>
+    <p class="lb-count" aria-live="polite"></p>`;
+  document.body.appendChild(box);
+  const img = box.querySelector("img");
+  const count = box.querySelector(".lb-count");
+
+  const show = (i) => {
+    index = (i + galleryLinks.length) % galleryLinks.length;
+    img.classList.remove("lb-in");
+    void img.offsetWidth; // restart the fade for each photo
+    img.classList.add("lb-in");
+    const thumb = galleryLinks[index].querySelector("img");
+    img.src = galleryLinks[index].href;
+    img.alt = thumb ? thumb.alt : "";
+    count.textContent = `${index + 1} of ${galleryLinks.length}`;
+  };
+  const open = (i) => {
+    lastFocus = document.activeElement;
+    show(i);
+    box.hidden = false;
+    box.classList.remove("lb-open");
+    void box.offsetWidth;
+    box.classList.add("lb-open");
+    document.body.style.overflow = "hidden";
+    box.querySelector(".lb-close").focus();
+  };
+  const close = () => {
+    box.hidden = true;
+    document.body.style.overflow = "";
+    lastFocus?.focus();
+  };
+
+  galleryLinks.forEach((link, i) => link.addEventListener("click", (e) => { e.preventDefault(); open(i); }));
+  box.querySelector(".lb-close").addEventListener("click", close);
+  box.querySelector(".lb-prev").addEventListener("click", () => show(index - 1));
+  box.querySelector(".lb-next").addEventListener("click", () => show(index + 1));
+  // one click anywhere closes it, except on the arrow buttons
+  box.addEventListener("click", (e) => { if (!e.target.closest(".lb-prev, .lb-next")) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (box.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") show(index - 1);
+    else if (e.key === "ArrowRight") show(index + 1);
+    else if (e.key === "Tab") {
+      // keep keyboard focus inside the viewer
+      const btns = [...box.querySelectorAll("button")];
+      const first = btns[0], last = btns[btns.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  // swipe on phones
+  let startX = null;
+  box.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    startX = null;
+  });
+}
